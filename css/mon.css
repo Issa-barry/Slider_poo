@@ -1,0 +1,267 @@
+
+/*SELECTEUR:
+div
+header
+header li{}
+header > nav
+#id {}
+.class {}
+* (asterix)
+[src*="png"] {} (selection d'attribut ici tous les attributs qui ont png vas etre seletionner)
+ ('*' est commence absolument par et '$' est termine par);
+ div + ul {}; div :hover +ul {}
+
+*/
+
+/*CONTEXT 
+:hover
+:focus
+:active
+:first-child
+:last-child
+:nth-child()
+:not()
+*/
+
+
+/*SELECTEUR PSEUDO ELEMENT
+::before
+::after
+*/
+
+
+*{margin: 0;
+    padding: 0;
+    border: 0; 
+    box-sizing: border-box; 
+    /**
+    taille de l'element + T margin + T padding + T border;
+    100px element
+    10px marge
+    5px padding
+    1px border
+
+    NB:Tout sa serra calculer grace au box-sizing;
+    **/
+}
+ 
+header{
+    background-color: black;
+}
+header ul{
+    display: flex;
+    list-style-type: none;
+}
+header a{
+    text-decoration: none;
+    padding: 20px;
+    display: block;
+    color: white;
+}
+header li:hover a{
+    color: black;
+    background-color: white;
+}
+img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.slider {
+    position: relative;
+}
+.slider-preview{
+    /* height: calc(100vh-58px);   par le prof */
+    height: calc(100vh - 58px);
+    overflow: hidden;
+}
+.slider-thumbs{
+    backdrop-filter: blur(2px);
+    position: absolute;
+    display: flex;
+    list-style: none ;
+    padding: 20px; /*ça marche grace au box-sizing: borderbox;*/
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-top: 1px solid rgba(0, 0, 0, 0.6);;
+    justify-content: center;
+   transition: all 600ms;
+   opacity: 0;
+    
+}
+.slider-thumbs:hover{opacity: 1;}
+.slider-thumbs li{
+   flex: 0 0 150px;
+   border: 1px solid black;
+   margin: 2px;
+   cursor: pointer;
+}
+
+
+
+/* ---------------------- */
+ 
+
+.icone-container{
+    backdrop-filter: blur(2px);
+    position: absolute;
+    bottom: 150px;
+    width: 100%;
+    justify-content: center;
+}
+.icone-container ul{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 20px; /*ça marche grace au box-sizing: borderbox;*/
+}
+.icone-container  li {
+    padding: 3px;
+    display: block;
+    color: white;
+    width: 33px;
+    height: 33px;
+    border: 2px solid white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 25px;
+    cursor: pointer;
+    margin-top: 25px;
+}
+.icone-container li:hover{
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: all 500ms;
+}
+.icone-container li p {
+   font-size: 18px;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   font-weight: bolder;
+}
+#myPause {
+    position: absolute;
+    left: 20px;
+    top: -10px;
+    margin-top: 0;
+}
+
+
+
+/* SLIDER PAUSE */
+.slider-pause {
+    background: rgba(0,0,0,0.8);
+    border: 1px solid black;
+	backdrop-filter: blur(2px);
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.slider-pause::after,
+.slider-pause::before {
+	display: block;
+    content: "";
+    background: white;
+    height: 50px;
+    width: 9px;
+    position: absolute;
+    top: 17.5px;
+}
+
+.slider-pause::after {
+	right: 25px;
+}
+.slider-pause::before {
+	left: 25px;
+}
+
+/* SLIDER LEFT */
+.slider-left {
+	position: absolute;
+	left: 15px;
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    cursor: pointer;
+}
+
+.slider-left::after,
+.slider-left::before {
+    display: block;
+    content: "";
+    background: rgb(255, 255, 255);
+    height: 50px;
+    width: 9px;
+    position: absolute;
+    transform: rotate(45deg);
+    left: 21px;
+}
+
+.slider-left::before {
+	transform: rotate(-45deg);
+    bottom: 0px;
+}
+
+/* SLIDER RIGHT */
+.slider-right {
+	position: absolute;
+	right: 15px;
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    cursor: pointer;
+}
+
+.slider-right::after,
+.slider-right::before {
+    display: block;
+    content: "";
+    background: rgb(255, 255, 255);
+    height: 50px;
+    width: 9px;
+    position: absolute;
+    transform: rotate(-45deg);
+    right: 21px;
+}
+
+.slider-right::before {
+	transform: rotate(45deg);
+    bottom: 0px;
+}
+
+.slider-pause.play::after{
+    display: none
+}
+
+.slider-pause.play::before{
+    background: transparent;
+    height: 0px;
+    width: 0px;
+    top: 50%;
+    left: 50%;
+    border: 30px solid white;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    transform: translate(-9px, -50%);
+    border-top-width: 20px;
+    border-bottom-width: 20px;
+}
+
+
+ /* .slider-nav {
+    transition: all 300ms;
+    opacity: 0;
+}
+
+.slider-nav.active {
+    opacity: 1;
+}  */

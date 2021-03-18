@@ -1,0 +1,46 @@
+*{margin: 0;padding: 0;border: 0;}
+section{display: flex;}
+
+section div {
+    background-color: black !important;
+    height: 10px;
+    width: 33.333%;
+}
+
+section div {
+    background-color: red;
+    background-color: rgba(red, green, blue, alpha);
+    background-color: hsla(hue, saturation, lightness, alpha);
+}
+
+/*------------------------------------------------------------------------------------------*/
+
+/*SELECTEUR:
+div
+header
+header li{}
+header > nav
+#id {}
+.class {}
+* (asterix)
+[src*="png"] {} (selection d'attribut ici tous les attributs qui ont png vas etre seletionner)
+ ('*' est commence absolument par et '$' est termine par);
+ div + ul {}; div :hover +ul {}
+
+*/
+
+/*CONTEXT 
+:hover
+:focus
+:active
+:first-child
+:last-child
+:nth-child()
+:not()
+*/
+
+
+/*SELECTEUR PSEUDO ELEMENT
+::before
+::after
+*/
